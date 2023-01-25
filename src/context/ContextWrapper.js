@@ -27,6 +27,8 @@ function initEvents() {
   return parsedEvents;
 }
 
+
+
 export default function ContextWrapper(props) {
   const [monthIndex, setMonthIndex] = useState(dayjs().month());
   const [smallCalendarMonth, setSmallCalendarMonth] = useState(null);
@@ -34,6 +36,7 @@ export default function ContextWrapper(props) {
   const [showEventModal, setShowEventModal] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [labels, setLabels] = useState([]);
+  const [showDisplayTasks,setShowDisplayTasks] = useState(false); //new
   const [savedEvents, dispatchCalEvent] = useReducer(
     savedEventsReducer,
     [],
@@ -81,6 +84,13 @@ export default function ContextWrapper(props) {
     }
   }, [showEventModal]);
 
+  //new
+  // useEffect(()=>{
+  //   if(!showDisplayTasks){
+  //     setShowDisplayTasks(false);
+  //   }
+  // },[showDisplayTasks])
+//
   function updateLabel(label) {
     setLabels(
       labels.map((lbl) => (lbl.label === label.label ? label : lbl))
@@ -106,6 +116,9 @@ export default function ContextWrapper(props) {
         labels,
         updateLabel,
         filteredEvents,
+        setShowDisplayTasks ,//new
+        //changed
+        showDisplayTasks
       }}
     >
       {props.children}

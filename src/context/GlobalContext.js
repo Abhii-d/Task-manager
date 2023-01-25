@@ -3,8 +3,8 @@ import React from "react";
 const GlobalContext = React.createContext({
   monthIndex: 0,
   setMonthIndex: (index) => {},
-  smallCalendarMonth: 0,
-  setSmallCalendarMonth: (index) => {},
+  // smallCalendarMonth: 0,
+  // setSmallCalendarMonth: (index) => {},
   daySelected: null,
   setDaySelected: (day) => {},
   showEventModal: false,
@@ -17,6 +17,8 @@ const GlobalContext = React.createContext({
   labels: [],
   updateLabel: () => {},
   filteredEvents: [],
+  showDisplayTasks : false,
+  setShowDisplayTasks : () =>{},
 });
 
 export default GlobalContext;

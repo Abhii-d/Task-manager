@@ -6,10 +6,12 @@ import CalendarHeader from "./components/CalendarHeader";
 import Month from "./components/Month";
 import GlobalContext from "./context/GlobalContext";
 import EventModal from "./components/EventModal";
+import DisplayTasks from "./components/DisplayTasks";
 
 function App() {
   const [currenMonth, setCurrentMonth] = useState(getMonth());
-  const { monthIndex, showEventModal } = useContext(GlobalContext);
+  const { monthIndex, showEventModal ,showDisplayTasks } = useContext(GlobalContext);
+
 
   useEffect(() => {
     setCurrentMonth(getMonth(monthIndex));
@@ -18,7 +20,7 @@ function App() {
   return (
     <React.Fragment>
       {showEventModal && <EventModal />}
-
+      {showDisplayTasks && <DisplayTasks/>}
       <div className="h-screen flex flex-col">
         <CalendarHeader />
         <div className="flex flex-1">
